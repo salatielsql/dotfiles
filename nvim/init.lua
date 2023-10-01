@@ -1,4 +1,11 @@
-require("config/options")
-require("config/plugins")
-require("config/plugins_config")
+require("plugin.lazy")
+
+vim.cmd.colorscheme "catppuccin"
+
+require("me.options")
+require("me.globals")
+require("me.lualine")
+require("me.keymap")
+require("me.lsp")
+require("me.telescope")
 
