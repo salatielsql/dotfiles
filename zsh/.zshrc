@@ -31,6 +31,8 @@ alias lla='ls -la'
 alias lt='ls --tree'
 eval $(thefuck --alias)
 alias y="yazi"
+# Git Branch Search
+alias gbs="git branch | grep "
 
 # PATH EXPORTS
 # ruby/gems
@@ -79,3 +81,4 @@ function yy() {
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+export PATH=$PATH:$HOME/.maestro/bin
