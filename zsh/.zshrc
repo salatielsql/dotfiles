@@ -82,3 +82,10 @@ function yy() {
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH=$PATH:$HOME/.maestro/bin
+
+# bun completions
+[ -s "/Users/salackl/.bun/_bun" ] && source "/Users/salackl/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
