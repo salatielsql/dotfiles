@@ -13,7 +13,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git web-search git-commit jira)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
+
+# asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 ###########################################################
 ##################### USER CONFIG #########################
@@ -21,6 +24,8 @@ source $ZSH/oh-my-zsh.sh
 
 # ALIASES
 alias pn="pnpm"
+alias b="bun"
+alias br="bun run"
 alias nr="npm run"
 alias ni="npm install"
 alias v="nvim"
@@ -28,7 +33,7 @@ alias ls="lsd"
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias lt='ls --tree'
+# alias lt='ls --tree'
 eval $(thefuck --alias)
 alias y="yazi"
 # Git Branch Search
@@ -36,11 +41,11 @@ alias gbs="git branch | grep "
 
 # PATH EXPORTS
 # ruby/gems
-export GEM_HOME=$HOME/.gem
-export PATH=$GEM_HOME/bin:$PATH
-export LDFLAGS="-L/opt/homebrew/opt/ruby@2.7/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/ruby@2.7/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby@2.7/lib/pkgconfig"
+# export GEM_HOME=$HOME/.gem
+# export PATH=$GEM_HOME/bin:$PATH
+# export LDFLAGS="-L/opt/homebrew/opt/ruby@2.7/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/ruby@2.7/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby@2.7/lib/pkgconfig"
 
 # nvm (node version management)
 export NVM_DIR="$HOME/.nvm"
@@ -81,11 +86,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/Users/salackl/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+export PATH="/opt/homebrew/opt/pnpm@8/bin:$PATH"
+
 
 # deno
 export DENO_INSTALL="/Users/salackl/.deno"
@@ -115,3 +117,18 @@ export PATH=$PATH:$HOME/.maestro/bin
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# trying to install ruby old version on mac m1
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3.4/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3.4/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3.4/lib/pkgconfig"
+
+export RUBY_CFLAGS=-DUSE_FFI_CLOSURE_ALLOC
+export optflags="-Wno-error=implicit-function-declaration"
+
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3.4/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3.4/include"
+CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3.4)" 
+RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3.4)"
+
