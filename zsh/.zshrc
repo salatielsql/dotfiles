@@ -1,22 +1,19 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git web-search git-commit jira)
+plugins=(git)
 
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+#. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 ###########################################################
 ##################### USER CONFIG #########################
@@ -33,19 +30,14 @@ alias ls="lsd"
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-# alias lt='ls --tree'
-eval $(thefuck --alias)
-alias y="yazi"
+alias lt='ls --tree'
+alias yy="yazi"
+
 # Git Branch Search
 alias gbs="git branch | grep "
 
 # PATH EXPORTS
-# ruby/gems
-# export GEM_HOME=$HOME/.gem
-# export PATH=$GEM_HOME/bin:$PATH
-# export LDFLAGS="-L/opt/homebrew/opt/ruby@2.7/lib"
-# export CPPFLAGS="-I/opt/homebrew/opt/ruby@2.7/include"
-# export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby@2.7/lib/pkgconfig"
+# export PATH=$PATH:$HOME/asdf
 
 # nvm (node version management)
 export NVM_DIR="$HOME/.nvm"
@@ -88,7 +80,6 @@ export PATH="/opt/homebrew/opt/ruby@2.7/bin:$PATH"
 # pnpm
 export PATH="/opt/homebrew/opt/pnpm@8/bin:$PATH"
 
-
 # deno
 export DENO_INSTALL="/Users/salackl/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
@@ -106,9 +97,6 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 export PATH=$PATH:$HOME/.maestro/bin
 
 # bun completions
@@ -117,18 +105,3 @@ export PATH=$PATH:$HOME/.maestro/bin
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# trying to install ruby old version on mac m1
-export LDFLAGS="-L/opt/homebrew/opt/openssl@3.4/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@3.4/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3.4/lib/pkgconfig"
-
-export RUBY_CFLAGS=-DUSE_FFI_CLOSURE_ALLOC
-export optflags="-Wno-error=implicit-function-declaration"
-
-export LDFLAGS="-L/opt/homebrew/opt/openssl@3.4/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@3.4/include"
-CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3.4)" 
-RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3.4)"
-

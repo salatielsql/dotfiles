@@ -1,0 +1,18 @@
+[user]
+  name = Salatiel Queiroz
+  email = 6747627+salatielsql@users.noreply.github.com
+
+[github]
+  user = salatielsql
+
+[init]
+  defaultBranch = main
+
+[push]
+  default = current
+
+[commit]
+  verbose = true
+
+# [alias]
+# TODO: add alias
