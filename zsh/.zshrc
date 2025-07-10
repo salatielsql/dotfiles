@@ -1,16 +1,19 @@
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# ZSH CONFIG
+
+# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+plugins=(git web-search git-commit jira)
 
 # asdf
 #. /opt/homebrew/opt/asdf/libexec/asdf.sh
@@ -20,24 +23,64 @@ source $ZSH/oh-my-zsh.sh
 ###########################################################
 
 # ALIASES
-alias pn="pnpm"
-alias b="bun"
-alias br="bun run"
+
+# package managers alias
+# npm
 alias nr="npm run"
 alias ni="npm install"
+alias nu="npm uninstall"
+
+# pnpm
+alias pnr="pnpm run"
+alias pni="pnpm install"
+alias pnu="pnpm uninstall"
+
+# yarn
+alias y="yarn"
+
+# bun
+alias br="bun run"
+
+# other tools
 alias v="nvim"
+
+# ls
 alias ls="lsd"
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias lt='ls --tree'
-alias yy="yazi"
 
-# Git Branch Search
-alias gbs="git branch | grep "
+# git
+alias gw="git switch"
+alias gbs="git branch | grep"
+alias gbn="git switch -c"
+alias gs="git push"
+alias gsf="git push --force"
+alias gca="git commit --amend"
+function gcm() {
+  if [ $1 = "" ]; then
+    printf '%s\n' "git commit with message failed (gcm): Provide a commit message." >&2; 
+  else
+    git commit -m $1
+  fi
+}
+function gcam() {
+  if [ $1 = "" ]; then
+    printf '%s\n' "git commit all with message failed (gcam): Provide a commit message." >&2; 
+  else
+    git add --all; git commit -m $1;
+  fi
+}
+alias gp="git pull"
+alias gpr="git pull --rebase origin"
+alias grlc="git reset --soft HEAD~1"
+alias gl="git log --oneline --decorate --color"
 
-# PATH EXPORTS
-# export PATH=$PATH:$HOME/asdf
+# other
+ZSH_HOME=$HOME
+alias sscf="source $ZSH_HOME/.zshrc"
+
+# PATH EXPORT
 
 # nvm (node version management)
 export NVM_DIR="$HOME/.nvm"
@@ -105,3 +148,9 @@ export PATH=$PATH:$HOME/.maestro/bin
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# stellar CLI autocomplete
+source <(stellar completion --shell bash)
+
+# signed commits
+export GPG_TTY=$(tty)
