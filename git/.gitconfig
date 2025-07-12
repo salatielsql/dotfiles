@@ -1,7 +1,7 @@
 [user]
   name = Salatiel Queiroz
   email = 6747627+salatielsql@users.noreply.github.com
-	signingkey = BBC6CA6365414E9A
+  signingkey = BBC6CA6365414E9A
 
 [github]
   user = salatielsql
@@ -14,7 +14,7 @@
 
 [commit]
   verbose = true
-	gpgsign = true
+  gpgsign = true
 
 [tag]
-	gpgSign = true
+  gpgSign = true
