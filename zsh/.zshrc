@@ -1,4 +1,4 @@
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -13,10 +13,9 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git web-search git-commit jira)
 
 # asdf
-#. /opt/homebrew/opt/asdf/libexec/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 ###########################################################
 ##################### USER CONFIG #########################
@@ -59,14 +58,14 @@ alias gsf="git push --force"
 alias gca="git commit --amend"
 function gcm() {
   if [ $1 = "" ]; then
-    printf '%s\n' "git commit with message failed (gcm): Provide a commit message." >&2; 
+    printf '%s\n' "git commit with message failed (gcm): Provide a commit message." >&2;
   else
     git commit -m $1
   fi
 }
 function gcam() {
   if [ $1 = "" ]; then
-    printf '%s\n' "git commit all with message failed (gcam): Provide a commit message." >&2; 
+    printf '%s\n' "git commit all with message failed (gcam): Provide a commit message." >&2;
   else
     git add --all; git commit -m $1;
   fi
@@ -86,32 +85,6 @@ alias sscf="source $ZSH_HOME/.zshrc"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# automatically changes node version when directory has .nvmrc
-autoload -U add-zsh-hook
-
-load-nvmrc() {
-  local nvmrc_path
-  nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version
-    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
-      nvm use
-    fi
-  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-# end load-nvmrc
 
 # android shit
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
@@ -150,7 +123,9 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # stellar CLI autocomplete
-source <(stellar completion --shell bash)
+if command -v stellar >/dev/null 2>&1; then
+  source <(stellar completion --shell bash)
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
