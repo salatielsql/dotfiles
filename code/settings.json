@@ -1,0 +1,133 @@
+{
+  // ================================
+  // Font
+  // ================================
+  "editor.fontFamily": "GeistMono Nerd Font",
+  "editor.fontWeight": "400",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 26,
+  "terminal.integrated.fontFamily": "GeistMono Nerd Font",
+  "terminal.integrated.fontSize": 14,
+  "editor.letterSpacing": 0,
+
+  // ================================
+  // Theme
+  // ================================
+  "workbench.colorTheme": "Catppuccin Macchiato",
+  // "workbench.colorTheme": "JetBrains Rider New UI Lighter", <- Decent light theme
+  "workbench.iconTheme": "symbols",
+  "workbench.activityBar.location": "hidden", // Bottom bar
+  "workbench.startupEditor": "none",
+  "editor.hover.sticky": true, // Allow hover to stay
+  "workbench.tree.enableStickyScroll": false, // Annoying sticky header
+  "editor.stickyScroll.enabled": false,
+  "editor.stickyScroll.scrollWithEditor": false,
+  "workbench.tips.enabled": false,
+  "breadcrumbs.enabled": true,
+  "workbench.colorCustomizations": {
+    "editorUnnecessaryCode.opacity": "#ffffff64",
+    "editorGroup.border": "#ffffff25",
+    "sideBar.border": "#ffffff25",
+    "sash.hoverBorder": "#ffffff",
+    "scrollbarSlider.background": "#ffffff66",
+    "panel.border": "#ffffff25",
+    "panelSectionHeader.border": "#ffffff25",
+    "panel.dropBorder": "#ffffff"
+  },
+  "window.titleBarStyle": "native",
+  "window.systemColorTheme": "dark",
+  "window.customTitleBarVisibility": "never",
+  "window.newWindowDimensions": "maximized",
+
+  // ================================
+  // Editor settings
+  // ================================
+  "settingsSync.ignoredSettings": ["editor.fontFamily", "editor.fontSize"],
+  "editor.lightbulb.enabled": "off",
+  "editor.hover.delay": 1000,
+  "editor.hover.enabled": true,
+  "editor.lineNumbers": "on",
+  "editor.snippetSuggestions": "top",
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.minimap.enabled": false,
+  "editor.cursorBlinking": "solid",
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "editor.multiCursorLimit": 100000,
+
+  // ================================
+  // Formatting
+  // ================================
+  "biome.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "files.associations": {
+    "*.mdx": "markdown"
+  },
+
+  // ================================
+  // Terminal
+  // ================================
+  "terminal.external.osxExec": "WezTerm.app",
+  "terminal.integrated.tabs.enabled": false,
+
+  // ================================
+  // Other
+  // ================================
+  "files.eol": "\n",
+  "editor.fontLigatures": "'calt', 'ss02', 'ss04'",
+  "editor.unicodeHighlight.allowedCharacters": {
+    "‑": true
+  },
+  "git.openRepositoryInParentFolders": "never",
+  "diffEditor.ignoreTrimWhitespace": true,
+
+  // ================================
+  // Copilot
+  // ================================
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false
+  }
+}
